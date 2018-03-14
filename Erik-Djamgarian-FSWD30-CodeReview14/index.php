@@ -4,20 +4,20 @@
 require_once 'actions/a_db_connect.php';
   // if session is not set this will redirect to login page
   if( isset($_SESSION['user']) ) {
-   
+
   // select logged-in admin detail
   $query = "SELECT * FROM admin WHERE id=".$_SESSION['user'];
   $res = mysqli_query($conn, $query);
   $userRow = mysqli_fetch_assoc($res);
   $userID = $userRow['id'];
   $userD = $userRow['delete'];
-    
+
 }else{
     $userD = 0;
 }
 ?>
 <style type="text/css">
-    
+
     .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -56,13 +56,13 @@ margin-left: 40px;
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="img/slider1.jpg" alt="First slide" style="max-height: 480px;">
+      <img class="d-block w-100" src="random.jpg" alt="First slide" style="max-height: 480px;">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="img/slider2.png" alt="Second slide" style="max-height: 480px;">
+      <img class="d-block w-100" src="random.jpg" alt="Second slide" style="max-height: 480px;">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="img/slider3.jpg" alt="Third slide" style="max-height: 480px;">
+      <img class="d-block w-100" src="random.jpg" alt="Third slide" style="max-height: 480px;">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -79,7 +79,7 @@ margin-left: 40px;
     <center><h1>- All Events -</h1></center>
     <br><br>
 
-<div class="container">    
+<div class="container">
   <div class="row">
 
 
@@ -91,7 +91,7 @@ margin-left: 40px;
             if($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     if ($userD == 1) {
-                   
+
                echo '
                       <div class="col-sm-4">
                            <div class="card">
@@ -99,13 +99,13 @@ margin-left: 40px;
                               <div class="container1">
                               <br>';
                             echo ' <a href="singlepage.php?id='.$row["id"].' "> ';
-                             echo '   <h4><b> - '.$row["name"].' - </b></h4> 
+                             echo '   <h4><b> - '.$row["name"].' - </b></h4>
                                </a>
-                              
+
                               <hr>
                                 <h5 class="address">'.$row["address"].'</h5>
                                 <hr>
-                                 <span>From :'.$row["start_date"].'</span> <br> <span> To : '.$row["end_date"].'</span> 
+                                 <span>From :'.$row["start_date"].'</span> <br> <span> To : '.$row["end_date"].'</span>
                                  <hr>
                                 <a href="update.php?id='.$row["id"].'"><button type="button" class="btn btn-info">Edit</button></a>
                                  <a href="delete.php?id='.$row["id"].'"><button type="button" class="btn btn-danger">Delete</button></a>
@@ -121,20 +121,20 @@ margin-left: 40px;
                               <div class="container1">
                               <br>';
                             echo ' <a href="singlepage.php?id='.$row["id"].' "> ';
-                             echo '   <h4><b> - '.$row["name"].' - </b></h4> 
+                             echo '   <h4><b> - '.$row["name"].' - </b></h4>
                                </a>
-                              
+
                               <hr>
                                 <h5 class="address">'.$row["address"].'</h5>
                                 <hr>
-                                 <span>'.$row["start_date"].'</span> / <span>'.$row["end_date"].'</span> 
+                                 <span>'.$row["start_date"].'</span> / <span>'.$row["end_date"].'</span>
                                  <hr>
                               </div>
                      </div>
                     </div>';
-                   
+
             }
- 
+
                  }
              }else {
                     echo "<tr><td colspan='5'><center>No Data Avaliable</center></td></tr>";
